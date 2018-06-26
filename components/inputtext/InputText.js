@@ -41,8 +41,16 @@ var InputText = exports.InputText = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (InputText.__proto__ || Object.getPrototypeOf(InputText)).call(this, props));
 
+        _this.state = {
+            valid: true,
+            isFocus: false
+        };
+
         _this.onInput = _this.onInput.bind(_this);
         _this.onKeyPress = _this.onKeyPress.bind(_this);
+        _this.onBlur = _this.onBlur.bind(_this);
+        _this.onFocus = _this.onFocus.bind(_this);
+        _this.valid = true;
         return _this;
     }
 
@@ -64,6 +72,10 @@ var InputText = exports.InputText = function (_Component) {
             if (this.props.keyfilter && this.props.validateOnly) {
                 validatePattern = _KeyFilter2.default.validate(e, this.props.keyfilter);
             }
+
+            this.setState({
+                valid: validatePattern
+            });
 
             if (this.props.onInput) {
                 this.props.onInput(e, validatePattern);
@@ -91,6 +103,20 @@ var InputText = exports.InputText = function (_Component) {
             }
         }
     }, {
+        key: 'onFocus',
+        value: function onFocus() {
+            this.setState({
+                isFocus: true
+            });
+        }
+    }, {
+        key: 'onBlur',
+        value: function onBlur() {
+            this.setState({
+                isFocus: false
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -98,12 +124,19 @@ var InputText = exports.InputText = function (_Component) {
             var className = (0, _classnames2.default)('ui-inputtext ui-state-default ui-corner-all ui-widget', this.props.className, {
                 'ui-state-disabled': this.props.disabled
             });
-
+            if (this.props.validateState && this.props.value && !this.state.isFocus && !this.state.valid) {
+                className += ' ui-state-error';
+            }
             var inputProps = Object.assign({}, this.props);
             delete inputProps.onInput;
             delete inputProps.onKeyPress;
             delete inputProps.keyfilter;
             delete inputProps.validateOnly;
+            delete inputProps.validateState;
+            if (this.props.validateState) {
+                inputProps.onFocus = this.onFocus;
+                inputProps.onBlur = this.onBlur;
+            }
 
             return _react2.default.createElement('input', _extends({ ref: function ref(el) {
                     return _this2.inputEl = el;
@@ -118,11 +151,13 @@ InputText.defaultProps = {
     onInput: null,
     onKeyPress: null,
     keyfilter: null,
-    validateOnly: false
+    validateOnly: false,
+    validateState: false
 };
 InputText.propTypes = {
     onInput: _propTypes2.default.func,
     onKeyPress: _propTypes2.default.func,
     keyfilter: _propTypes2.default.any,
-    validateOnly: _propTypes2.default.bool
+    validateOnly: _propTypes2.default.bool,
+    validateState: _propTypes2.default.bool
 };
