@@ -21,16 +21,17 @@ interface AutoCompleteProps {
     size?: number;
     appendTo?: any;
     tabindex?: number;
-    completeMethod?(e: {originalEvent: Event, query: any}): void;
+    isValidate?: boolean;
+    completeMethod?(e: { originalEvent: Event, query: any }): void;
     itemTemplate?(data: any): void;
     selectedItemTemplate?(): void;
-    onChange?(e: {originalEvent: Event, value: any}): void;
+    onChange?(e: { originalEvent: Event, value: any }): void;
     onFocus?(event: Event): void;
     onBlur?(event: Event): void;
-    onSelect?(e: {originalEvent: Event, value: any}): void;
-    onUnselect?(e: {originalEvent: Event, value: any}): void;
-    onDropdownClick?(e: {originalEvent: Event, query: any}): void;
-    onClick?(event:Event): void;
+    onSelect?(e: { originalEvent: Event, value: any }): void;
+    onUnselect?(e: { originalEvent: Event, value: any }): void;
+    onDropdownClick?(e: { originalEvent: Event, query: any }): void;
+    onClick?(event: Event): void;
     onDblClick?(): void;
     onMouseDown?(): void;
     onKeyUp?(): void;
@@ -38,4 +39,4 @@ interface AutoCompleteProps {
     onContextMenu?(): void;
 }
 
-export class AutoComplete extends React.Component<AutoCompleteProps,any> {}
+export class AutoComplete extends React.Component<AutoCompleteProps, any> { }

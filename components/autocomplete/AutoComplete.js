@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AutoComplete = undefined;
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -65,18 +67,14 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
         _this.onMultiInputFocus = _this.onMultiInputFocus.bind(_this);
         _this.onMultiInputBlur = _this.onMultiInputBlur.bind(_this);
         _this.selectItem = _this.selectItem.bind(_this);
+        _this.valid = true;
         return _this;
     }
 
     _createClass(AutoComplete, [{
         key: 'shouldComponentUpdate',
         value: function shouldComponentUpdate(nextProps, nextState) {
-            if (this.manualModelChange) {
-                this.manualModelChange = false;
-                return false;
-            } else {
-                return true;
-            }
+            return true;
         }
     }, {
         key: 'onInputChange',
@@ -354,7 +352,7 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
         key: 'onInputFocus',
         value: function onInputFocus(event) {
             this.focus = true;
-
+            this.valid = true;
             if (this.props.onFocus) {
                 this.props.onFocus(event);
             }
@@ -363,7 +361,13 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
         key: 'onInputBlur',
         value: function onInputBlur(event) {
             this.focus = false;
-
+            if (this.props.isValidate && this.props.value) {
+                if (_typeof(this.props.value) === 'object') {
+                    this.valid = true;
+                } else {
+                    this.valid = false;
+                }
+            }
             if (this.props.onBlur) {
                 this.props.onBlur(event);
             }
@@ -455,7 +459,7 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
 
             var inputClassName = (0, _classnames2.default)('ui-autocomplete-input', this.props.inputClassName, {
                 'ui-autocomplete-dd-input': this.props.dropdown
-            });
+            }, this.valid ? '' : 'ui-state-error');
 
             return _react2.default.createElement(_InputText.InputText, { ref: function ref(el) {
                     return _this3.inputEl = _reactDom2.default.findDOMNode(el);
@@ -645,6 +649,7 @@ AutoComplete.defaultProps = {
     completeMethod: null,
     itemTemplate: null,
     selectedItemTemplate: null,
+    isValidate: null,
     onChange: null,
     onFocus: null,
     onBlur: null,
@@ -684,6 +689,7 @@ AutoComplete.propTypes = {
     completeMethod: _propTypes2.default.func,
     itemTemplate: _propTypes2.default.func,
     selectedItemTemplate: _propTypes2.default.func,
+    isValidate: _propTypes2.default.bool,
     onChange: _propTypes2.default.func,
     onFocus: _propTypes2.default.func,
     onBlur: _propTypes2.default.func,
