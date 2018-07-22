@@ -414,9 +414,9 @@ export class AutoComplete extends Component {
             } else {
                 this.valid = false;
             }
-        }
-        if (this.props.onValidated) {
-            this.props.onValidated(this.valid);
+            if (this.props.onValidated) {
+                this.props.onValidated(this.valid);
+            }
         }
         if (this.props.onBlur) {
             this.props.onBlur(event);

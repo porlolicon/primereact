@@ -112,6 +112,9 @@ var InputText = exports.InputText = function (_Component) {
     }, {
         key: 'onBlur',
         value: function onBlur() {
+            if (this.props.onValidated) {
+                this.props.onValidated(this.state.valid);
+            }
             this.setState({
                 isFocus: false
             });
@@ -150,12 +153,14 @@ var InputText = exports.InputText = function (_Component) {
 InputText.defaultProps = {
     onInput: null,
     onKeyPress: null,
+    onValidated: null,
     keyfilter: null,
     validateOnly: false,
     validateState: false
 };
 InputText.propTypes = {
     onInput: _propTypes2.default.func,
+    onValidated: _propTypes2.default.func,
     onKeyPress: _propTypes2.default.func,
     keyfilter: _propTypes2.default.any,
     validateOnly: _propTypes2.default.bool,

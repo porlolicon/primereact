@@ -91,11 +91,11 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
             if (this.props.isValidate) {
                 if (this.props.suggestions.length > 0) {
                     if (this.props.field) {
-                        for (var i = 0; i < this.props.suggestions.length; i++) {
-                            if (this.props.suggestions[i][this.props.field] === event.target.value) {
-                                query = this.props.suggestions[i];
-                                break;
-                            }
+                        var obj = this.props.suggestions.find(function (obj) {
+                            return obj[_this2.props.field] === event.target.value;
+                        });
+                        if (obj) {
+                            query = obj;
                         }
                     } else {
                         throw "Need field parameter for validate";
@@ -383,9 +383,9 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
                 } else {
                     this.valid = false;
                 }
-            }
-            if (this.props.onValidated) {
-                this.props.onValidated(this.valid);
+                if (this.props.onValidated) {
+                    this.props.onValidated(this.valid);
+                }
             }
             if (this.props.onBlur) {
                 this.props.onBlur(event);

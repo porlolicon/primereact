@@ -13,6 +13,7 @@ export class InputText extends Component {
     static defaultProps = {
         onInput: null,
         onKeyPress: null,
+        onValidated: null,
         keyfilter: null,
         validateOnly: false,
         validateState: false
@@ -20,10 +21,11 @@ export class InputText extends Component {
 
     static propTypes = {
         onInput: PropTypes.func,
+        onValidated: PropTypes.func,
         onKeyPress: PropTypes.func,
         keyfilter: PropTypes.any,
         validateOnly: PropTypes.bool,
-        validateState: PropTypes.bool
+        validateState: PropTypes.bool,
     };
 
     constructor(props) {
@@ -88,6 +90,9 @@ export class InputText extends Component {
     }
 
     onBlur() {
+        if (this.props.onValidated) {
+            this.props.onValidated(this.state.valid)
+        }
         this.setState({
             isFocus: false
         })
@@ -106,7 +111,7 @@ export class InputText extends Component {
         delete inputProps.keyfilter;
         delete inputProps.validateOnly;
         delete inputProps.validateState;
-        if(this.props.validateState){
+        if (this.props.validateState) {
             inputProps.onFocus = this.onFocus
             inputProps.onBlur = this.onBlur
         }
