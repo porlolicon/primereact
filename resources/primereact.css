@@ -222,169 +222,6 @@ button {
 .ui-accordion .ui-accordion-content-wrapper-expanding {
     overflow: hidden;
 }
-.ui-autocomplete {
-    width: auto;
-    zoom: 1;
-    cursor: pointer;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    position: relative;
-    display: inline-block;
-}
-
-.ui-autocomplete .ui-autocomplete-dropdown {
-    height: 100%;
-    width: 2em;
-    margin-right: 0;
-    vertical-align: top;
-}
-
-.ui-autocomplete .ui-autocomplete-input {
-    padding-right: 1.5em;
-}
-
-.ui-autocomplete-loader {
-    position: absolute;
-    right: .25em;
-    top: 50%;
-    margin-top: -.5em;
-}
-
-.ui-autocomplete-query {
-    font-weight: bold;
-}
-
-.ui-autocomplete .ui-autocomplete-panel {
-    min-width: 100%;
-}
-
-.ui-autocomplete-panel {
-    position: absolute;
-    overflow: auto;
-    display: none;
-}
-
-.ui-autocomplete-panel .ui-autocomplete-list {
-    padding: 0.4em;
-    border: 0 none;
-}
-
-.ui-autocomplete-panel .ui-autocomplete-list-item {
-    border: 0 none;
-    cursor: pointer;
-    font-weight: normal;
-    margin: 1px 0;
-    padding: 0.186em 0.313em;
-    text-align: left;
-}
-
-.ui-autocomplete .ui-button-icon-only,
-.ui-autocomplete .ui-button-icon-only:enabled:hover,
-.ui-autocomplete .ui-button-icon-only:enabled:focus,
-.ui-autocomplete .ui-button-icon-only:enabled:active {
-    border-left: 0 none;
-}
-
-/* Multiple Selection */
-.ui-autocomplete-multiple-container {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.ui-autocomplete-multiple-container.ui-inputtext {
-    clear: left;
-    cursor: text;
-    list-style-type: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0 1.5em 0 .25em;
-}
-
-.ui-autocomplete-token {
-    cursor: default;
-    display: inline-block;
-    vertical-align: middle;
-    overflow: hidden;
-    padding: .125em .5em;
-    white-space: nowrap;
-    position: relative;
-    margin-right: .125em;
-    border: 0 none;
-    font-size: .9em;
-}
-
-.ui-autocomplete-token-label {
-    display: block;
-    margin-right: 2em;
-}
-
-.ui-autocomplete-token-icon {
-    margin-top: -.5em;
-    position: absolute;
-    right: 0.2em;
-    top: 50%;
-    cursor: pointer;
-}
-
-.ui-autocomplete-input-token {
-    display: inline-block;
-    vertical-align: middle;
-    list-style-type: none;
-    margin: 0 0 0 .125em;
-    padding: .25em .25em .25em 0;
-}
-
-.ui-autocomplete-input-token input {
-    border: 0 none;
-    width: 10em;
-    outline: medium none;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-}
-
-.ui-autocomplete-dd .ui-autocomplete-loader {
-    right: 2.25em;
-}
-
-.ui-autocomplete-dd input.ui-corner-all ,
-.ui-autocomplete-dd .ui-autocomplete-multiple-container.ui-corner-all {
-     -moz-border-radius-topright: 0px; 
-     -webkit-border-top-right-radius: 0px;
-     border-top-right-radius: 0px;
-     -moz-border-radius-bottomright: 0px;
-     -webkit-border-bottom-right-radius: 0px;
-     border-bottom-right-radius: 0px;
- }
- 
-.ui-autocomplete-dd .ui-autocomplete-dropdown.ui-corner-all {
-     -moz-border-radius-topleft: 0px; 
-     -webkit-border-top-left-radius: 0px;
-     border-top-left-radius: 0px;
-     -moz-border-radius-bottomleft: 0px;
-     -webkit-border-bottom-left-radius: 0px;
-     border-bottom-left-radius: 0px;
-}
-
-/** AutoComplete **/
-.ui-fluid .ui-autocomplete,
-.ui-fluid .ui-autocomplete-input {
-    width: 100%;
-}
-
-.ui-fluid .ui-autocomplete.ui-autocomplete-dd .ui-autocomplete-input,
-.ui-fluid .ui-autocomplete.ui-autocomplete-dd .ui-autocomplete-multiple-container {
-    width: calc(100% - 2em);
-}
-
-.ui-fluid .ui-autocomplete .ui-autocomplete-dropdown.ui-button {
-    width: 2em;
-}
 /** Breadcrumb **/
 .ui-breadcrumb {
     margin: 0;
@@ -880,6 +717,169 @@ button.ui-button::-moz-focus-inner {
     opacity: 1;
     filter:Alpha(Opacity=100);
 }
+.ui-autocomplete {
+    width: auto;
+    zoom: 1;
+    cursor: pointer;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    position: relative;
+    display: inline-block;
+}
+
+.ui-autocomplete .ui-autocomplete-dropdown {
+    height: 100%;
+    width: 2em;
+    margin-right: 0;
+    vertical-align: top;
+}
+
+.ui-autocomplete .ui-autocomplete-input {
+    padding-right: 1.5em;
+}
+
+.ui-autocomplete-loader {
+    position: absolute;
+    right: .25em;
+    top: 50%;
+    margin-top: -.5em;
+}
+
+.ui-autocomplete-query {
+    font-weight: bold;
+}
+
+.ui-autocomplete .ui-autocomplete-panel {
+    min-width: 100%;
+}
+
+.ui-autocomplete-panel {
+    position: absolute;
+    overflow: auto;
+    display: none;
+}
+
+.ui-autocomplete-panel .ui-autocomplete-list {
+    padding: 0.4em;
+    border: 0 none;
+}
+
+.ui-autocomplete-panel .ui-autocomplete-list-item {
+    border: 0 none;
+    cursor: pointer;
+    font-weight: normal;
+    margin: 1px 0;
+    padding: 0.186em 0.313em;
+    text-align: left;
+}
+
+.ui-autocomplete .ui-button-icon-only,
+.ui-autocomplete .ui-button-icon-only:enabled:hover,
+.ui-autocomplete .ui-button-icon-only:enabled:focus,
+.ui-autocomplete .ui-button-icon-only:enabled:active {
+    border-left: 0 none;
+}
+
+/* Multiple Selection */
+.ui-autocomplete-multiple-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ui-autocomplete-multiple-container.ui-inputtext {
+    clear: left;
+    cursor: text;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 1.5em 0 .25em;
+}
+
+.ui-autocomplete-token {
+    cursor: default;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    padding: .125em .5em;
+    white-space: nowrap;
+    position: relative;
+    margin-right: .125em;
+    border: 0 none;
+    font-size: .9em;
+}
+
+.ui-autocomplete-token-label {
+    display: block;
+    margin-right: 2em;
+}
+
+.ui-autocomplete-token-icon {
+    margin-top: -.5em;
+    position: absolute;
+    right: 0.2em;
+    top: 50%;
+    cursor: pointer;
+}
+
+.ui-autocomplete-input-token {
+    display: inline-block;
+    vertical-align: middle;
+    list-style-type: none;
+    margin: 0 0 0 .125em;
+    padding: .25em .25em .25em 0;
+}
+
+.ui-autocomplete-input-token input {
+    border: 0 none;
+    width: 10em;
+    outline: medium none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.ui-autocomplete-dd .ui-autocomplete-loader {
+    right: 2.25em;
+}
+
+.ui-autocomplete-dd input.ui-corner-all ,
+.ui-autocomplete-dd .ui-autocomplete-multiple-container.ui-corner-all {
+     -moz-border-radius-topright: 0px; 
+     -webkit-border-top-right-radius: 0px;
+     border-top-right-radius: 0px;
+     -moz-border-radius-bottomright: 0px;
+     -webkit-border-bottom-right-radius: 0px;
+     border-bottom-right-radius: 0px;
+ }
+ 
+.ui-autocomplete-dd .ui-autocomplete-dropdown.ui-corner-all {
+     -moz-border-radius-topleft: 0px; 
+     -webkit-border-top-left-radius: 0px;
+     border-top-left-radius: 0px;
+     -moz-border-radius-bottomleft: 0px;
+     -webkit-border-bottom-left-radius: 0px;
+     border-bottom-left-radius: 0px;
+}
+
+/** AutoComplete **/
+.ui-fluid .ui-autocomplete,
+.ui-fluid .ui-autocomplete-input {
+    width: 100%;
+}
+
+.ui-fluid .ui-autocomplete.ui-autocomplete-dd .ui-autocomplete-input,
+.ui-fluid .ui-autocomplete.ui-autocomplete-dd .ui-autocomplete-multiple-container {
+    width: calc(100% - 2em);
+}
+
+.ui-fluid .ui-autocomplete .ui-autocomplete-dropdown.ui-button {
+    width: 2em;
+}
 .ui-card-header img {
     width: 100%;
 }
@@ -916,34 +916,6 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-chart {
     position: relative
-}
-.ui-chkbox {
-    display: inline-block;
-    cursor: pointer;
-    vertical-align: middle;
-    margin-right: .25em;
-}
-
-.ui-chkbox .ui-chkbox-box {
-    width: 1.125em;
-    height: 1.125em;
-    line-height: 1.125em;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    text-align: center;
-}
-
-.ui-chkbox .ui-chkbox-icon {
-    display: block;
-}
-
-.ui-chkbox-label {
-    vertical-align: middle;  
-}
-
-.ui-chkbox + label {
-    vertical-align: middle;
 }
 .ui-chips > ul.ui-inputtext {
     clear: left;
@@ -1003,6 +975,34 @@ button.ui-button::-moz-focus-inner {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
+}
+.ui-chkbox {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: .25em;
+}
+
+.ui-chkbox .ui-chkbox-box {
+    width: 1.125em;
+    height: 1.125em;
+    line-height: 1.125em;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.ui-chkbox .ui-chkbox-icon {
+    display: block;
+}
+
+.ui-chkbox-label {
+    vertical-align: middle;  
+}
+
+.ui-chkbox + label {
+    vertical-align: middle;
 }
 .ui-colorpicker {
     display: inline-block;
@@ -1127,41 +1127,6 @@ button.ui-button::-moz-focus-inner {
 }
 
 
-.ui-datalist .ui-datalist-header,
-.ui-datalist .ui-datalist-footer {
-    text-align:center;
-	padding: .5em .75em;
-}
-
-.ui-datalist .ui-datalist-header {
-    border-bottom: 0 none;
-}
-
-.ui-datalist .ui-datalist-footer {
-    border-top: 0 none;
-}
-
-.ui-datalist .ui-paginator {
-    border-top: 0 none;
-}
-
-.ui-datalist .ui-datalist-data {
-    margin: 0;
-    padding: 0;
-}
-
-.ui-datalist .ui-datalist-data > li {
-    list-style-type: none;
-    
-}
-
-.ui-datalist .ui-datalist-emptymessage {
-    padding: .5em .75em;
-}
-
-.ui-datalist.ui-datalist-scrollable .ui-datalist-content {
-    overflow: auto;
-}
 .ui-datascroller {
 }
 
@@ -1573,6 +1538,41 @@ button.ui-button::-moz-focus-inner {
     .ui-datatable-reflow.ui-datatable-scrollable .ui-datatable-scrollable-body colgroup {
         display: block;
     }
+}
+.ui-datalist .ui-datalist-header,
+.ui-datalist .ui-datalist-footer {
+    text-align:center;
+	padding: .5em .75em;
+}
+
+.ui-datalist .ui-datalist-header {
+    border-bottom: 0 none;
+}
+
+.ui-datalist .ui-datalist-footer {
+    border-top: 0 none;
+}
+
+.ui-datalist .ui-paginator {
+    border-top: 0 none;
+}
+
+.ui-datalist .ui-datalist-data {
+    margin: 0;
+    padding: 0;
+}
+
+.ui-datalist .ui-datalist-data > li {
+    list-style-type: none;
+    
+}
+
+.ui-datalist .ui-datalist-emptymessage {
+    padding: .5em .75em;
+}
+
+.ui-datalist.ui-datalist-scrollable .ui-datalist-content {
+    overflow: auto;
 }
 .ui-dataview .ui-paginator {
     text-align: center;
@@ -4238,6 +4238,42 @@ button.ui-button::-moz-focus-inner {
 .ui-slider-animate .ui-slider-handle {
     transition: left .3s;
 }
+.ui-splitbutton {
+    position: relative;
+    display: inline-block;
+    zoom: 1;
+    margin-right: .5em;
+}
+
+.ui-splitbutton .ui-button.ui-splitbutton-menubutton {
+    width: 2em;
+}
+
+.ui-splitbutton.ui-state-disabled button {
+    cursor: default;
+}
+
+.ui-fluid .ui-splitbutton {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+
+.ui-fluid .ui-splitbutton .ui-button:first-child {
+    width: calc(100% - 2em);
+}
+
+.ui-fluid .ui-splitbutton .ui-button.ui-splitbutton-menubutton {
+    width: 2em;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+
+.ui-splitbutton.ui-button-secondary .ui-button.ui-state-default:first-child {
+    border-right: 0 none;
+}
 .ui-spinner {
     display: inline-block;
     overflow: visible;
@@ -4290,42 +4326,6 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-fluid .ui-spinner .ui-spinner-button .ui-spinner-button-icon {
     left: .375em;
-}
-.ui-splitbutton {
-    position: relative;
-    display: inline-block;
-    zoom: 1;
-    margin-right: .5em;
-}
-
-.ui-splitbutton .ui-button.ui-splitbutton-menubutton {
-    width: 2em;
-}
-
-.ui-splitbutton.ui-state-disabled button {
-    cursor: default;
-}
-
-.ui-fluid .ui-splitbutton {
-    width: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing: border-box;
-}
-
-.ui-fluid .ui-splitbutton .ui-button:first-child {
-    width: calc(100% - 2em);
-}
-
-.ui-fluid .ui-splitbutton .ui-button.ui-splitbutton-menubutton {
-    width: 2em;
-    box-sizing: border-box;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing: border-box;
-}
-
-.ui-splitbutton.ui-button-secondary .ui-button.ui-state-default:first-child {
-    border-right: 0 none;
 }
 .ui-steps ul {
     list-style-type: none;

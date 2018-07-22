@@ -36,6 +36,7 @@ export class AutoComplete extends Component {
         itemTemplate: null,
         selectedItemTemplate: null,
         isValidate: null,
+        onValidated: null,
         onChange: null,
         onFocus: null,
         onBlur: null,
@@ -76,7 +77,8 @@ export class AutoComplete extends Component {
         completeMethod: PropTypes.func,
         itemTemplate: PropTypes.func,
         selectedItemTemplate: PropTypes.func,
-        isValidate:PropTypes.bool,
+        isValidate: PropTypes.bool,
+        onValidated: PropTypes.func,
         onChange: PropTypes.func,
         onFocus: PropTypes.func,
         onBlur: PropTypes.func,
@@ -396,6 +398,9 @@ export class AutoComplete extends Component {
             } else {
                 this.valid = false;
             }
+        }
+        if (this.props.onValidated) {
+            this.props.onValidated(this.valid);
         }
         if (this.props.onBlur) {
             this.props.onBlur(event);

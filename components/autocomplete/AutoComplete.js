@@ -368,6 +368,9 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
                     this.valid = false;
                 }
             }
+            if (this.props.onValidated) {
+                this.props.onValidated(this.valid);
+            }
             if (this.props.onBlur) {
                 this.props.onBlur(event);
             }
@@ -650,6 +653,7 @@ AutoComplete.defaultProps = {
     itemTemplate: null,
     selectedItemTemplate: null,
     isValidate: null,
+    onValidated: null,
     onChange: null,
     onFocus: null,
     onBlur: null,
@@ -690,6 +694,7 @@ AutoComplete.propTypes = {
     itemTemplate: _propTypes2.default.func,
     selectedItemTemplate: _propTypes2.default.func,
     isValidate: _propTypes2.default.bool,
+    onValidated: _propTypes2.default.func,
     onChange: _propTypes2.default.func,
     onFocus: _propTypes2.default.func,
     onBlur: _propTypes2.default.func,

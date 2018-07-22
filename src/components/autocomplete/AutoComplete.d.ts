@@ -25,6 +25,7 @@ interface AutoCompleteProps {
     completeMethod?(e: { originalEvent: Event, query: any }): void;
     itemTemplate?(data: any): void;
     selectedItemTemplate?(): void;
+    onValidated?(e: bool): void;
     onChange?(e: { originalEvent: Event, value: any }): void;
     onFocus?(event: Event): void;
     onBlur?(event: Event): void;
