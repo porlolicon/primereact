@@ -5,7 +5,6 @@ interface InputTextProps extends React.HTMLProps<HTMLInputElement> {
     onValidated?(e: bool): void;
     validateState?: boolean;
     validateOnly?: boolean;
-    onValidated?(e: boolean): void;
     onInput?(): void;
 
 }

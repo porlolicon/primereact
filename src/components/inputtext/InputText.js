@@ -16,7 +16,7 @@ export class InputText extends Component {
         onValidated: null,
         keyfilter: null,
         validateOnly: false,
-        validateState: false
+        validateState: false,
     };
 
     static propTypes = {
@@ -111,6 +111,7 @@ export class InputText extends Component {
         delete inputProps.keyfilter;
         delete inputProps.validateOnly;
         delete inputProps.validateState;
+        delete inputProps.onValidated;
         if (this.props.validateState) {
             inputProps.onFocus = this.onFocus
             inputProps.onBlur = this.onBlur

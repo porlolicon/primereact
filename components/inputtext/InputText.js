@@ -136,6 +136,7 @@ var InputText = exports.InputText = function (_Component) {
             delete inputProps.keyfilter;
             delete inputProps.validateOnly;
             delete inputProps.validateState;
+            delete inputProps.onValidated;
             if (this.props.validateState) {
                 inputProps.onFocus = this.onFocus;
                 inputProps.onBlur = this.onBlur;
