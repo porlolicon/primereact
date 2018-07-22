@@ -92,6 +92,21 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
                 this.updateModel(event, query);
             }
 
+            if (this.props.isValidate) {
+                if (this.props.suggestions.length > 0) {
+                    if (this.props.field) {
+                        for (var i = 0; i < this.props.suggestions.length; i++) {
+                            if (this.props.suggestions[i][this.props.field] === event.target.value) {
+                                query = this.props.suggestions[i];
+                                break;
+                            }
+                        }
+                    } else {
+                        throw "Need field parameter for validate";
+                    }
+                }
+            }
+
             if (query.length === 0) {
                 this.hidePanel();
                 if (this.props.onClear) {
