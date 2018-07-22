@@ -121,10 +121,6 @@ export class AutoComplete extends Component {
         }
 
         let query = event.target.value;
-        if (!this.props.multiple) {
-            this.manualModelChange = true;
-            this.updateModel(event, query);
-        }
 
         if (this.props.isValidate) {
             if (this.props.suggestions.length > 0) {
@@ -139,6 +135,11 @@ export class AutoComplete extends Component {
                     throw "Need field parameter for validate"
                 }
             }
+        }
+
+        if (!this.props.multiple) {
+            this.manualModelChange = true;
+            this.updateModel(event, query);
         }
 
         if (query.length === 0) {
