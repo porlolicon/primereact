@@ -125,14 +125,14 @@ export class AutoComplete extends Component {
         if (this.props.isValidate) {
             if (this.props.suggestions.length > 0) {
                 if (this.props.field) {
-                    for (var i = 0; i < this.props.suggestions.length; i++) {
-                        if (this.props.suggestions[i][this.props.field] === event.target.value) {
-                            query = this.props.suggestions[i];
-                            break;
-                        }
+                    let obj = this.props.suggestions.find((obj) => {
+                        return obj[this.props.field] === event.target.value
+                    })
+                    if (obj) {
+                        query = obj;
                     }
                 } else {
-                    throw "Need field parameter for validate"
+                    throw "Need field parameter for validate";
                 }
             }
         }

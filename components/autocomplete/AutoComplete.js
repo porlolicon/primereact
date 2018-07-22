@@ -87,10 +87,6 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
             }
 
             var query = event.target.value;
-            if (!this.props.multiple) {
-                this.manualModelChange = true;
-                this.updateModel(event, query);
-            }
 
             if (this.props.isValidate) {
                 if (this.props.suggestions.length > 0) {
@@ -105,6 +101,11 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
                         throw "Need field parameter for validate";
                     }
                 }
+            }
+
+            if (!this.props.multiple) {
+                this.manualModelChange = true;
+                this.updateModel(event, query);
             }
 
             if (query.length === 0) {
