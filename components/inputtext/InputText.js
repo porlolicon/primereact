@@ -33,6 +33,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var specialChars = "-./";
+
 var InputText = exports.InputText = function (_Component) {
     _inherits(InputText, _Component);
 
@@ -69,6 +71,16 @@ var InputText = exports.InputText = function (_Component) {
         key: 'onInput',
         value: function onInput(e) {
             var validatePattern = true;
+            if (this.props.mask && e.target.value) {
+                var len = e.target.value.length;
+                if (len > this.props.value.length) {
+                    if (len > this.props.mask.length) {
+                        e.target.value = e.target.value.slice(0, -1);
+                    } else if (specialChars.indexOf(this.props.mask[len]) !== -1) {
+                        e.target.value += this.props.mask[len];
+                    }
+                }
+            }
             if (this.props.keyfilter && this.props.validateOnly) {
                 validatePattern = _KeyFilter2.default.validate(e, this.props.keyfilter);
             }
@@ -137,6 +149,7 @@ var InputText = exports.InputText = function (_Component) {
             delete inputProps.validateOnly;
             delete inputProps.validateState;
             delete inputProps.onValidated;
+            delete inputProps.mask;
             if (this.props.validateState) {
                 inputProps.onFocus = this.onFocus;
                 inputProps.onBlur = this.onBlur;
@@ -153,6 +166,7 @@ var InputText = exports.InputText = function (_Component) {
 
 InputText.defaultProps = {
     onInput: null,
+    mask: null,
     onKeyPress: null,
     onValidated: null,
     keyfilter: null,
@@ -161,6 +175,7 @@ InputText.defaultProps = {
 };
 InputText.propTypes = {
     onInput: _propTypes2.default.func,
+    mask: _propTypes2.default.string,
     onValidated: _propTypes2.default.func,
     onKeyPress: _propTypes2.default.func,
     keyfilter: _propTypes2.default.any,

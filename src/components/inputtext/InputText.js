@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import KeyFilter from "../keyfilter/KeyFilter";
 
+const specialChars = "-./"
+
 export class InputText extends Component {
 
     state = {
@@ -12,6 +14,7 @@ export class InputText extends Component {
 
     static defaultProps = {
         onInput: null,
+        mask: null,
         onKeyPress: null,
         onValidated: null,
         keyfilter: null,
@@ -21,6 +24,7 @@ export class InputText extends Component {
 
     static propTypes = {
         onInput: PropTypes.func,
+        mask: PropTypes.string,
         onValidated: PropTypes.func,
         onKeyPress: PropTypes.func,
         keyfilter: PropTypes.any,
@@ -49,6 +53,16 @@ export class InputText extends Component {
 
     onInput(e) {
         let validatePattern = true;
+        if (this.props.mask && e.target.value) {
+            let len = e.target.value.length
+            if (len > this.props.value.length) {
+                if (len > this.props.mask.length) {
+                    e.target.value = e.target.value.slice(0, -1)
+                } else if (specialChars.indexOf(this.props.mask[len]) !== -1) {
+                    e.target.value += this.props.mask[len]
+                }
+            }
+        }
         if (this.props.keyfilter && this.props.validateOnly) {
             validatePattern = KeyFilter.validate(e, this.props.keyfilter);
         }
@@ -112,6 +126,7 @@ export class InputText extends Component {
         delete inputProps.validateOnly;
         delete inputProps.validateState;
         delete inputProps.onValidated;
+        delete inputProps.mask;
         if (this.props.validateState) {
             inputProps.onFocus = this.onFocus
             inputProps.onBlur = this.onBlur
