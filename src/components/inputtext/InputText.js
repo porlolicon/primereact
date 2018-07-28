@@ -15,6 +15,7 @@ export class InputText extends Component {
     static defaultProps = {
         onInput: null,
         mask: null,
+        convertDate: null,
         onKeyPress: null,
         onValidated: null,
         keyfilter: null,
@@ -25,6 +26,7 @@ export class InputText extends Component {
     static propTypes = {
         onInput: PropTypes.func,
         mask: PropTypes.string,
+        convertDate: PropTypes.bool,
         onValidated: PropTypes.func,
         onKeyPress: PropTypes.func,
         keyfilter: PropTypes.any,
@@ -58,8 +60,17 @@ export class InputText extends Component {
             if (len > this.props.value.length) {
                 if (len > this.props.mask.length) {
                     e.target.value = e.target.value.slice(0, -1)
-                } else if (specialChars.indexOf(this.props.mask[len]) !== -1) {
-                    e.target.value += this.props.mask[len]
+                } else {
+                    if (specialChars.indexOf(this.props.mask[len]) !== -1) {
+                        e.target.value += this.props.mask[len]
+                    }
+                    if (this.props.convertDate && e.target.value.length === 10) {
+                        let year = parseInt(e.target.value.split('/')[2])
+                        if (year > new Date().getFullYear()) {
+                            year -= 543
+                        }
+                        e.target.value = e.target.value.slice(0, -4) + year
+                    }
                 }
             }
         }
@@ -127,6 +138,7 @@ export class InputText extends Component {
         delete inputProps.validateState;
         delete inputProps.onValidated;
         delete inputProps.mask;
+        delete inputProps.convertDate;
         if (this.props.validateState) {
             inputProps.onFocus = this.onFocus
             inputProps.onBlur = this.onBlur

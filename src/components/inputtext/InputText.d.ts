@@ -3,6 +3,7 @@ import React = require("react");
 interface InputTextProps extends React.HTMLProps<HTMLInputElement> {
     [key: string]: any;
     mask?: string
+    convertDate?: bool;
     onValidated?(e: bool): void;
     validateState?: boolean;
     validateOnly?: boolean;

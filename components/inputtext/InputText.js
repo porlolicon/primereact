@@ -76,8 +76,17 @@ var InputText = exports.InputText = function (_Component) {
                 if (len > this.props.value.length) {
                     if (len > this.props.mask.length) {
                         e.target.value = e.target.value.slice(0, -1);
-                    } else if (specialChars.indexOf(this.props.mask[len]) !== -1) {
-                        e.target.value += this.props.mask[len];
+                    } else {
+                        if (specialChars.indexOf(this.props.mask[len]) !== -1) {
+                            e.target.value += this.props.mask[len];
+                        }
+                        if (this.props.convertDate && e.target.value.length === 10) {
+                            var year = parseInt(e.target.value.split('/')[2]);
+                            if (year > new Date().getFullYear()) {
+                                year -= 543;
+                            }
+                            e.target.value = e.target.value.slice(0, -4) + year;
+                        }
                     }
                 }
             }
@@ -150,6 +159,7 @@ var InputText = exports.InputText = function (_Component) {
             delete inputProps.validateState;
             delete inputProps.onValidated;
             delete inputProps.mask;
+            delete inputProps.convertDate;
             if (this.props.validateState) {
                 inputProps.onFocus = this.onFocus;
                 inputProps.onBlur = this.onBlur;
@@ -167,6 +177,7 @@ var InputText = exports.InputText = function (_Component) {
 InputText.defaultProps = {
     onInput: null,
     mask: null,
+    convertDate: null,
     onKeyPress: null,
     onValidated: null,
     keyfilter: null,
@@ -176,6 +187,7 @@ InputText.defaultProps = {
 InputText.propTypes = {
     onInput: _propTypes2.default.func,
     mask: _propTypes2.default.string,
+    convertDate: _propTypes2.default.bool,
     onValidated: _propTypes2.default.func,
     onKeyPress: _propTypes2.default.func,
     keyfilter: _propTypes2.default.any,

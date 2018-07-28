@@ -405,6 +405,236 @@ button {
 .ui-fluid .ui-autocomplete .ui-autocomplete-dropdown.ui-button {
     width: 2em;
 }
+/* Button */
+.ui-button {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    text-decoration: none !important;
+    cursor: pointer;
+    text-align: center;
+    zoom: 1;
+    overflow: visible; /* the overflow property removes extra width in IE */
+    margin-right: 0.25em;
+}
+
+p-button {
+    display: inline-block;
+}
+
+.ui-button-icon-only {
+    width: 2em;
+}
+
+/*button text element */
+.ui-button .ui-button-text {
+    display: block;
+    line-height: normal;
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: .25em 1em;
+}
+
+.ui-button-icon-only .ui-button-text,
+.ui-button-text-empty .ui-button-text {
+    padding: .25em;
+    text-indent: -9999999px;
+}
+
+.ui-button-text-icon-left .ui-button-text {
+    padding: .25em 1em .25em 2.1em;
+}
+
+.ui-button-text-icon-right .ui-button-text {
+    padding: .25em 2.1em .25em 1em;
+}
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-button-icon-left,
+.ui-button-text-icon-left .ui-button-icon-left,
+.ui-button-text-icon-right .ui-button-icon-right {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5em;
+    height: 1em;
+}
+
+.ui-button-icon-only .ui-button-icon-left {
+    top: 50%;
+    left: 50%;
+    margin-top: -.5em;
+    margin-left: -.5em;
+    width: 1em;
+    height: 1em;
+}
+
+.ui-button-icon-left {
+    left: .5em;
+}
+
+.ui-button-icon-right {
+    right: .5em;
+}
+
+/*button sets*/
+.ui-buttonset .ui-button {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* workarounds */
+button.ui-button::-moz-focus-inner {
+    border: 0; padding: 0; /* reset extra padding in Firefox */
+}
+
+/** Fluid **/
+.ui-fluid .ui-button {
+    width: 100%;
+}
+
+.ui-fluid .ui-button-text-icon-left .ui-button-text,
+.ui-fluid .ui-button-text-icon-right .ui-button-text {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/** ButtonSet **/
+.ui-fluid .ui-buttonset {
+    width: 100%;
+}
+
+.ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button {width: 100%;}
+.ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button {width: 50%;}
+.ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button {width: 33.3%;}
+.ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button {width: 25%;}
+.ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button {width: 20%;}
+.ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {width: 16.6%;}
+
+@media (max-width: 640px) {
+    .ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {
+        width: 100%;
+    }
+}
+
+/* Severity Buttons */
+/* Secondary */
+.ui-button.ui-button-secondary.ui-state-default,
+.ui-splitbutton.ui-button-secondary .ui-button.ui-state-default {
+    background-color: #ffffff;
+    border-color: #cccccc;
+    color: #373a3c;
+}
+
+.ui-button.ui-button-secondary:enabled:hover,
+.ui-button.ui-button-secondary:focus,
+.ui-splitbutton.ui-button-secondary .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-secondary .ui-button:focus {
+    background-color: #f2f2f2;
+    border-color: #cccccc;
+    color: #373a3c;
+}
+
+.ui-button.ui-button-secondary:enabled:active,
+.ui-splitbutton.ui-button-secondary .ui-button:enabled:active  {
+    background-color: #e6e6e6;
+    border-color: #cccccc;
+    color: #373a3c;
+}
+
+/* Success */
+.ui-button.ui-button-success.ui-state-default,
+.ui-splitbutton.ui-button-success .ui-button.ui-state-default {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    color: #ffffff;
+}
+
+.ui-button.ui-button-success:enabled:hover,
+.ui-button.ui-button-success:focus,
+.ui-splitbutton.ui-button-success .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-success .ui-button:focus {
+    background-color: #4cae4c;
+    border-color: #5cb85c;
+}
+
+.ui-button.ui-button-success:enabled:active,
+.ui-splitbutton.ui-button-success .ui-button:enabled:active {
+    background-color: #449d44;
+    border-color: #5cb85c;
+}
+
+/* Info */
+.ui-button.ui-button-info.ui-state-default,
+.ui-splitbutton.ui-button-info .ui-button.ui-state-default {
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+    color: #ffffff;
+}
+
+.ui-button.ui-button-info:enabled:hover,
+.ui-button.ui-button-info:focus,
+.ui-splitbutton.ui-button-info .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-info .ui-button:focus {
+    background-color: #46b8da;
+    border-color: #5bc0de;
+}
+
+.ui-button.ui-button-info:enabled:active,
+.ui-splitbutton.ui-button-info .ui-button:enabled:active {
+    background-color: #31b0d5;
+    border-color: #5bc0de;
+}
+
+/* Warning */
+.ui-button.ui-button-warning.ui-state-default,
+.ui-splitbutton.ui-button-warning .ui-button.ui-state-default {
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+    color: #ffffff;
+}
+
+.ui-button.ui-button-warning:enabled:hover,
+.ui-button.ui-button-warning:focus,
+.ui-splitbutton.ui-button-warning .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-warning .ui-button:focus {
+    background-color: #eea236;
+    border-color: #f0ad4e;
+}
+
+.ui-button.ui-button-warning:enabled:active,
+.ui-splitbutton.ui-button-warning .ui-button:enabled:active {
+    background-color: #ec971f;
+    border-color: #f0ad4e;
+}
+
+/* Danger */
+.ui-button.ui-button-danger.ui-state-default,
+.ui-splitbutton.ui-button-danger .ui-button.ui-state-default {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    color: #ffffff;
+}
+
+.ui-button.ui-button-danger:enabled:hover,
+.ui-button.ui-button-danger:focus,
+.ui-splitbutton.ui-button-danger .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-danger .ui-button:focus {
+    background-color: #d43f3a;
+    border-color: #d9534f;
+}
+
+.ui-button.ui-button-danger:enabled:active,
+.ui-splitbutton.ui-button-danger .ui-button:enabled:active {
+    background-color: #c9302c;
+    border-color: #d9534f;
+}
+
 .ui-calendar {
     position: relative;
     display: inline-block;
@@ -687,236 +917,6 @@ button {
 .ui-chart {
     position: relative
 }
-/* Button */
-.ui-button {
-    display: inline-block;
-    position: relative;
-    padding: 0;
-    text-decoration: none !important;
-    cursor: pointer;
-    text-align: center;
-    zoom: 1;
-    overflow: visible; /* the overflow property removes extra width in IE */
-    margin-right: 0.25em;
-}
-
-p-button {
-    display: inline-block;
-}
-
-.ui-button-icon-only {
-    width: 2em;
-}
-
-/*button text element */
-.ui-button .ui-button-text {
-    display: block;
-    line-height: normal;
-}
-
-.ui-button-text-only .ui-button-text {
-    padding: .25em 1em;
-}
-
-.ui-button-icon-only .ui-button-text,
-.ui-button-text-empty .ui-button-text {
-    padding: .25em;
-    text-indent: -9999999px;
-}
-
-.ui-button-text-icon-left .ui-button-text {
-    padding: .25em 1em .25em 2.1em;
-}
-
-.ui-button-text-icon-right .ui-button-text {
-    padding: .25em 2.1em .25em 1em;
-}
-
-/*button icon element(s) */
-.ui-button-icon-only .ui-button-icon-left,
-.ui-button-text-icon-left .ui-button-icon-left,
-.ui-button-text-icon-right .ui-button-icon-right {
-    position: absolute;
-    top: 50%;
-    margin-top: -.5em;
-    height: 1em;
-}
-
-.ui-button-icon-only .ui-button-icon-left {
-    top: 50%;
-    left: 50%;
-    margin-top: -.5em;
-    margin-left: -.5em;
-    width: 1em;
-    height: 1em;
-}
-
-.ui-button-icon-left {
-    left: .5em;
-}
-
-.ui-button-icon-right {
-    right: .5em;
-}
-
-/*button sets*/
-.ui-buttonset .ui-button {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-/* workarounds */
-button.ui-button::-moz-focus-inner {
-    border: 0; padding: 0; /* reset extra padding in Firefox */
-}
-
-/** Fluid **/
-.ui-fluid .ui-button {
-    width: 100%;
-}
-
-.ui-fluid .ui-button-text-icon-left .ui-button-text,
-.ui-fluid .ui-button-text-icon-right .ui-button-text {
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-/** ButtonSet **/
-.ui-fluid .ui-buttonset {
-    width: 100%;
-}
-
-.ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button {width: 100%;}
-.ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button {width: 50%;}
-.ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button {width: 33.3%;}
-.ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button {width: 25%;}
-.ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button {width: 20%;}
-.ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {width: 16.6%;}
-
-@media (max-width: 640px) {
-    .ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button,
-    .ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button,
-    .ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button,
-    .ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button,
-    .ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button,
-    .ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {
-        width: 100%;
-    }
-}
-
-/* Severity Buttons */
-/* Secondary */
-.ui-button.ui-button-secondary.ui-state-default,
-.ui-splitbutton.ui-button-secondary .ui-button.ui-state-default {
-    background-color: #ffffff;
-    border-color: #cccccc;
-    color: #373a3c;
-}
-
-.ui-button.ui-button-secondary:enabled:hover,
-.ui-button.ui-button-secondary:focus,
-.ui-splitbutton.ui-button-secondary .ui-button:enabled:hover,
-.ui-splitbutton.ui-button-secondary .ui-button:focus {
-    background-color: #f2f2f2;
-    border-color: #cccccc;
-    color: #373a3c;
-}
-
-.ui-button.ui-button-secondary:enabled:active,
-.ui-splitbutton.ui-button-secondary .ui-button:enabled:active  {
-    background-color: #e6e6e6;
-    border-color: #cccccc;
-    color: #373a3c;
-}
-
-/* Success */
-.ui-button.ui-button-success.ui-state-default,
-.ui-splitbutton.ui-button-success .ui-button.ui-state-default {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
-    color: #ffffff;
-}
-
-.ui-button.ui-button-success:enabled:hover,
-.ui-button.ui-button-success:focus,
-.ui-splitbutton.ui-button-success .ui-button:enabled:hover,
-.ui-splitbutton.ui-button-success .ui-button:focus {
-    background-color: #4cae4c;
-    border-color: #5cb85c;
-}
-
-.ui-button.ui-button-success:enabled:active,
-.ui-splitbutton.ui-button-success .ui-button:enabled:active {
-    background-color: #449d44;
-    border-color: #5cb85c;
-}
-
-/* Info */
-.ui-button.ui-button-info.ui-state-default,
-.ui-splitbutton.ui-button-info .ui-button.ui-state-default {
-    background-color: #5bc0de;
-    border-color: #5bc0de;
-    color: #ffffff;
-}
-
-.ui-button.ui-button-info:enabled:hover,
-.ui-button.ui-button-info:focus,
-.ui-splitbutton.ui-button-info .ui-button:enabled:hover,
-.ui-splitbutton.ui-button-info .ui-button:focus {
-    background-color: #46b8da;
-    border-color: #5bc0de;
-}
-
-.ui-button.ui-button-info:enabled:active,
-.ui-splitbutton.ui-button-info .ui-button:enabled:active {
-    background-color: #31b0d5;
-    border-color: #5bc0de;
-}
-
-/* Warning */
-.ui-button.ui-button-warning.ui-state-default,
-.ui-splitbutton.ui-button-warning .ui-button.ui-state-default {
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
-    color: #ffffff;
-}
-
-.ui-button.ui-button-warning:enabled:hover,
-.ui-button.ui-button-warning:focus,
-.ui-splitbutton.ui-button-warning .ui-button:enabled:hover,
-.ui-splitbutton.ui-button-warning .ui-button:focus {
-    background-color: #eea236;
-    border-color: #f0ad4e;
-}
-
-.ui-button.ui-button-warning:enabled:active,
-.ui-splitbutton.ui-button-warning .ui-button:enabled:active {
-    background-color: #ec971f;
-    border-color: #f0ad4e;
-}
-
-/* Danger */
-.ui-button.ui-button-danger.ui-state-default,
-.ui-splitbutton.ui-button-danger .ui-button.ui-state-default {
-    background-color: #d9534f;
-    border-color: #d9534f;
-    color: #ffffff;
-}
-
-.ui-button.ui-button-danger:enabled:hover,
-.ui-button.ui-button-danger:focus,
-.ui-splitbutton.ui-button-danger .ui-button:enabled:hover,
-.ui-splitbutton.ui-button-danger .ui-button:focus {
-    background-color: #d43f3a;
-    border-color: #d9534f;
-}
-
-.ui-button.ui-button-danger:enabled:active,
-.ui-splitbutton.ui-button-danger .ui-button:enabled:active {
-    background-color: #c9302c;
-    border-color: #d9534f;
-}
-
 .ui-chkbox {
     display: inline-block;
     cursor: pointer;
@@ -2638,6 +2638,14 @@ button.ui-button::-moz-focus-inner {
     border-top: 0 none;
     border-bottom: 0 none;
 }
+.ui-inputtextarea-resizable {
+    overflow: hidden;
+    resize: none;
+}
+
+.ui-fluid .ui-inputtextarea {
+    width: 100%;
+}
 .ui-inputtext {
     margin: 0;
     outline: medium none;
@@ -2745,14 +2753,6 @@ button.ui-button::-moz-focus-inner {
 .ui-float-label .input:-webkit-autofill ~ label {
   top:-20px;
   font-size:12px;
-}
-.ui-inputtextarea-resizable {
-    overflow: hidden;
-    resize: none;
-}
-
-.ui-fluid .ui-inputtextarea {
-    width: 100%;
 }
 .ui-lightbox {
     position: fixed;
@@ -3215,53 +3215,6 @@ button.ui-button::-moz-focus-inner {
     left: 100%;
     top:0px;
 }
-.ui-organizationchart .ui-organizationchart-table {
-    border-spacing: 0;
-    border-collapse: separate;
-}
-
-.ui-organizationchart .ui-organizationchart-table > tbody > tr > td {
-    text-align: center;
-    vertical-align: top;
-    padding: 0;
-    padding: 0 .75em;
-}
-
-.ui-organizationchart .ui-organizationchart-node-content {
-    padding: .5em .75em;
-    display: inline-block;
-    position: relative;
-}
-
-.ui-organizationchart .ui-organizationchart-node-content .ui-node-toggler {
-    position: absolute;
-    bottom: -9px;
-    margin-left: -8px;
-    z-index: 2;
-    left: 50%;
-}
-
-.ui-organizationchart .ui-organizationchart-line-down {
-    margin: 0 auto;
-    height: 20px;
-    width: 1px;
-    float: none;
-}
-
-.ui-organizationchart .ui-organizationchart-line-right {
-    float: none;
-    border-radius: 0px;
-}
-
-.ui-organizationchart .ui-organizationchart-line-left {
-    float: none;
-    border-radius: 0;
-}
-
-.ui-organizationchart .ui-organizationchart-node-content.ui-organizationchart-selectable-node {
-    cursor: pointer;
-}
-
 .ui-orderlist {
     display: table;
 }
@@ -3380,6 +3333,53 @@ button.ui-button::-moz-focus-inner {
         width: 100%;
     }
 }
+.ui-organizationchart .ui-organizationchart-table {
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.ui-organizationchart .ui-organizationchart-table > tbody > tr > td {
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    padding: 0 .75em;
+}
+
+.ui-organizationchart .ui-organizationchart-node-content {
+    padding: .5em .75em;
+    display: inline-block;
+    position: relative;
+}
+
+.ui-organizationchart .ui-organizationchart-node-content .ui-node-toggler {
+    position: absolute;
+    bottom: -9px;
+    margin-left: -8px;
+    z-index: 2;
+    left: 50%;
+}
+
+.ui-organizationchart .ui-organizationchart-line-down {
+    margin: 0 auto;
+    height: 20px;
+    width: 1px;
+    float: none;
+}
+
+.ui-organizationchart .ui-organizationchart-line-right {
+    float: none;
+    border-radius: 0px;
+}
+
+.ui-organizationchart .ui-organizationchart-line-left {
+    float: none;
+    border-radius: 0;
+}
+
+.ui-organizationchart .ui-organizationchart-node-content.ui-organizationchart-selectable-node {
+    cursor: pointer;
+}
+
 .ui-overlaypanel {
     padding: 0;
     margin: 0;
@@ -3558,133 +3558,6 @@ button.ui-button::-moz-focus-inner {
 .ui-password-panel-overlay {
     position: absolute;
 } 
-.ui-progressbar { 
-    height: 1.2em; 
-    text-align: left; 
-    position: relative;
-    overflow: hidden;
-}
-
-.ui-progressbar-determinate .ui-progressbar-value {
-    height: 100%;
-    width: 0%;
-    position: absolute;
-    display: none;
-    border: 0 none;
-}
-
-.ui-progressbar-determinate .ui-progressbar-value-animate {
-    -webkit-transition: width 1s ease-in-out;
-    -moz-transition: width 1s ease-in-out;
-    -o-transition: width 1s ease-in-out;
-    transition: width 1s ease-in-out;
-}
-
-.ui-progressbar-determinate .ui-progressbar-label {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    display: none;
-    font-weight: bold;
-}
-
-.ui-progressbar.ui-progressbar-indeterminate {
-    border-width: 0;
-    overflow: visible;
-    margin-top: 1.5em;
-}
-
-.ui-progressbar-indeterminate .ui-progressbar-indeterminate-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid;
-    border-color: inherit;
-    border-radius: inherit;
-}
-
-.ui-progressbar-indeterminate .ui-progressbar-label {
-    position: absolute;
-    top: -1.3em;
-}
-
-.ui-progressbar-indeterminate .ui-progressbar-value {
-    border: 0 none;
-}
-
-.ui-progressbar-indeterminate .ui-progressbar-value:before {
-    content: '';
-    position: absolute;
-    background-color: inherit;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    will-change: left, right;
-    -webkit-animation: ui-progressbar-indeterminate-anim 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-    animation: ui-progressbar-indeterminate-anim 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-}
-
-.ui-progressbar-indeterminate .ui-progressbar-value:after {
-    content: '';
-    position: absolute;
-    background-color: inherit;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    will-change: left, right;
-    -webkit-animation: ui-progressbar-indeterminate-anim-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-    animation: ui-progressbar-indeterminate-anim-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-    -webkit-animation-delay: 1.15s;
-    animation-delay: 1.15s;
-}
-
-@-webkit-keyframes ui-progressbar-indeterminate-anim {
-    0% {
-        left: -35%;
-        right: 100%; }
-    60% {
-        left: 100%;
-        right: -90%; }
-    100% {
-        left: 100%;
-        right: -90%; }
-}
-@keyframes ui-progressbar-indeterminate-anim {
-    0% {
-        left: -35%;
-        right: 100%; }
-    60% {
-        left: 100%;
-        right: -90%; }
-    100% {
-        left: 100%;
-        right: -90%; }
-}
-
-@-webkit-keyframes ui-progressbar-indeterminate-anim-short {
-    0% {
-        left: -200%;
-        right: 100%; }
-    60% {
-        left: 107%;
-        right: -8%; }
-    100% {
-        left: 107%;
-        right: -8%; }
-}
-@keyframes ui-progressbar-indeterminate-anim-short {
-    0% {
-        left: -200%;
-        right: 100%; }
-    60% {
-        left: 107%;
-        right: -8%; }
-    100% {
-        left: 107%;
-        right: -8%; }
-}
 .ui-picklist > div {
     float: left;
 }
@@ -3873,6 +3746,133 @@ button.ui-button::-moz-focus-inner {
     }
 }
 
+.ui-progressbar { 
+    height: 1.2em; 
+    text-align: left; 
+    position: relative;
+    overflow: hidden;
+}
+
+.ui-progressbar-determinate .ui-progressbar-value {
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    display: none;
+    border: 0 none;
+}
+
+.ui-progressbar-determinate .ui-progressbar-value-animate {
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+.ui-progressbar-determinate .ui-progressbar-label {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    font-weight: bold;
+}
+
+.ui-progressbar.ui-progressbar-indeterminate {
+    border-width: 0;
+    overflow: visible;
+    margin-top: 1.5em;
+}
+
+.ui-progressbar-indeterminate .ui-progressbar-indeterminate-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid;
+    border-color: inherit;
+    border-radius: inherit;
+}
+
+.ui-progressbar-indeterminate .ui-progressbar-label {
+    position: absolute;
+    top: -1.3em;
+}
+
+.ui-progressbar-indeterminate .ui-progressbar-value {
+    border: 0 none;
+}
+
+.ui-progressbar-indeterminate .ui-progressbar-value:before {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: ui-progressbar-indeterminate-anim 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+    animation: ui-progressbar-indeterminate-anim 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+.ui-progressbar-indeterminate .ui-progressbar-value:after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: ui-progressbar-indeterminate-anim-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    animation: ui-progressbar-indeterminate-anim-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    -webkit-animation-delay: 1.15s;
+    animation-delay: 1.15s;
+}
+
+@-webkit-keyframes ui-progressbar-indeterminate-anim {
+    0% {
+        left: -35%;
+        right: 100%; }
+    60% {
+        left: 100%;
+        right: -90%; }
+    100% {
+        left: 100%;
+        right: -90%; }
+}
+@keyframes ui-progressbar-indeterminate-anim {
+    0% {
+        left: -35%;
+        right: 100%; }
+    60% {
+        left: 100%;
+        right: -90%; }
+    100% {
+        left: 100%;
+        right: -90%; }
+}
+
+@-webkit-keyframes ui-progressbar-indeterminate-anim-short {
+    0% {
+        left: -200%;
+        right: 100%; }
+    60% {
+        left: 107%;
+        right: -8%; }
+    100% {
+        left: 107%;
+        right: -8%; }
+}
+@keyframes ui-progressbar-indeterminate-anim-short {
+    0% {
+        left: -200%;
+        right: 100%; }
+    60% {
+        left: 107%;
+        right: -8%; }
+    100% {
+        left: 107%;
+        right: -8%; }
+}
 .ui-progress-spinner {
     position: relative;
     margin: 0 auto;
@@ -3945,18 +3945,6 @@ button.ui-button::-moz-focus-inner {
     }
 }
 
-.ui-rating a {
-    cursor: pointer;
-}
-
-.ui-rating {
-    font-size: 1.25em;
-}
-
-.ui-rating.ui-state-disabled a,
-.ui-rating.ui-rating-readonly a {
-    cursor: default;
-}
 .ui-radiobutton {
     display:inline-block;
     cursor: pointer;
@@ -3988,6 +3976,18 @@ button.ui-button::-moz-focus-inner {
  
 .ui-radiobutton + label {
     vertical-align: middle;
+}
+.ui-rating a {
+    cursor: pointer;
+}
+
+.ui-rating {
+    font-size: 1.25em;
+}
+
+.ui-rating.ui-state-disabled a,
+.ui-rating.ui-rating-readonly a {
+    cursor: default;
 }
 .ui-fluid .fc .ui-button {
     width: auto;
