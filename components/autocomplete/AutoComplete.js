@@ -210,6 +210,7 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
     }, {
         key: 'showPanel',
         value: function showPanel() {
+            this.isOpen = true;
             if (this.focus) {
                 this.alignPanel();
 
@@ -236,25 +237,29 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
     }, {
         key: 'hidePanel',
         value: function hidePanel() {
+            this.isOpen = false;
             this.panel.element.style.display = 'none';
             this.unbindDocumentClickListener();
         }
     }, {
         key: 'onDropdownClick',
         value: function onDropdownClick(event) {
-            this.inputEl.focus();
+            if (this.isOpen) {
+                this.hidePanel();
+            } else {
+                this.inputEl.focus();
+                if (this.documentClickListener) {
+                    this.dropdownClick = true;
+                }
 
-            if (this.documentClickListener) {
-                this.dropdownClick = true;
-            }
+                if (this.props.dropdownMode === 'blank') this.search(event, '', 'dropdown');else if (this.props.dropdownMode === 'current') this.search(event, this.inputEl.value, 'dropdown');
 
-            if (this.props.dropdownMode === 'blank') this.search(event, '', 'dropdown');else if (this.props.dropdownMode === 'current') this.search(event, this.inputEl.value, 'dropdown');
-
-            if (this.props.onDropdownClick) {
-                this.props.onDropdownClick({
-                    originalEvent: event,
-                    query: this.inputEl.value
-                });
+                if (this.props.onDropdownClick) {
+                    this.props.onDropdownClick({
+                        originalEvent: event,
+                        query: this.inputEl.value
+                    });
+                }
             }
         }
     }, {

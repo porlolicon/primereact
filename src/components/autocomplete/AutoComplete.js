@@ -245,6 +245,7 @@ export class AutoComplete extends Component {
     }
 
     showPanel() {
+        this.isOpen = true
         if (this.focus) {
             this.alignPanel();
 
@@ -270,27 +271,31 @@ export class AutoComplete extends Component {
     }
 
     hidePanel() {
+        this.isOpen = false
         this.panel.element.style.display = 'none';
         this.unbindDocumentClickListener();
     }
 
     onDropdownClick(event) {
-        this.inputEl.focus();
+        if (this.isOpen) {
+            this.hidePanel()
+        } else {
+            this.inputEl.focus();
+            if (this.documentClickListener) {
+                this.dropdownClick = true;
+            }
 
-        if (this.documentClickListener) {
-            this.dropdownClick = true;
-        }
+            if (this.props.dropdownMode === 'blank')
+                this.search(event, '', 'dropdown');
+            else if (this.props.dropdownMode === 'current')
+                this.search(event, this.inputEl.value, 'dropdown');
 
-        if (this.props.dropdownMode === 'blank')
-            this.search(event, '', 'dropdown');
-        else if (this.props.dropdownMode === 'current')
-            this.search(event, this.inputEl.value, 'dropdown');
-
-        if (this.props.onDropdownClick) {
-            this.props.onDropdownClick({
-                originalEvent: event,
-                query: this.inputEl.value
-            });
+            if (this.props.onDropdownClick) {
+                this.props.onDropdownClick({
+                    originalEvent: event,
+                    query: this.inputEl.value
+                });
+            }
         }
     }
 
