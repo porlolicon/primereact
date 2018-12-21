@@ -297,7 +297,7 @@ var Dropdown = exports.Dropdown = function (_Component) {
         key: 'findOption',
         value: function findOption(value) {
             var index = this.findOptionIndex(value);
-            return index !== -1 ? this.props.options[index] : null;
+            return index !== -1 ? this.props.options[index] : value;
         }
     }, {
         key: 'show',
@@ -436,7 +436,8 @@ var Dropdown = exports.Dropdown = function (_Component) {
             } else {
                 var className = (0, _classnames2.default)('ui-dropdown-label ui-inputtext ui-corner-all', {
                     'ui-placeholder': label === null && this.props.placeholder,
-                    'ui-dropdown-label-empty': label === null && !this.props.placeholder });
+                    'ui-dropdown-label-empty': label === null && !this.props.placeholder
+                });
 
                 return _react2.default.createElement(
                     'label',
@@ -508,6 +509,7 @@ var Dropdown = exports.Dropdown = function (_Component) {
     }, {
         key: 'getOptionLabel',
         value: function getOptionLabel(option) {
+            console.log("Dropdown", option);
             return this.props.optionLabel ? _ObjectUtils2.default.resolveFieldData(option, this.props.optionLabel) : option.label;
         }
     }, {
@@ -548,8 +550,10 @@ var Dropdown = exports.Dropdown = function (_Component) {
         value: function render() {
             var _this10 = this;
 
-            var className = (0, _classnames2.default)('ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix', this.props.className, { 'ui-state-disabled': this.props.disabled,
-                'ui-dropdown-clearable': this.props.showClear && !this.props.disabled });
+            var className = (0, _classnames2.default)('ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix', this.props.className, {
+                'ui-state-disabled': this.props.disabled,
+                'ui-dropdown-clearable': this.props.showClear && !this.props.disabled
+            });
             var selectedOption = this.findOption(this.props.value);
             var label = selectedOption ? this.getOptionLabel(selectedOption) : null;
 
