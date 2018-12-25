@@ -391,6 +391,7 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
                 if (this.props.onValidated) {
                     this.props.onValidated(this.valid);
                 }
+                this.renderSimpleAutoComplete();
             }
             if (this.props.onBlur) {
                 this.props.onBlur(event);

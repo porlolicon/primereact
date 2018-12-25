@@ -422,6 +422,7 @@ export class AutoComplete extends Component {
             if (this.props.onValidated) {
                 this.props.onValidated(this.valid);
             }
+            this.renderSimpleAutoComplete()
         }
         if (this.props.onBlur) {
             this.props.onBlur(event);
