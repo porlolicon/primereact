@@ -509,7 +509,6 @@ var Dropdown = exports.Dropdown = function (_Component) {
     }, {
         key: 'getOptionLabel',
         value: function getOptionLabel(option) {
-            console.log("Dropdown", option);
             return this.props.optionLabel ? _ObjectUtils2.default.resolveFieldData(option, this.props.optionLabel) : option.label;
         }
     }, {
