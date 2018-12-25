@@ -466,7 +466,6 @@ export class Dropdown extends Component {
     }
 
     getOptionLabel(option) {
-        console.log("Dropdown", option)
         return this.props.optionLabel ? ObjectUtils.resolveFieldData(option, this.props.optionLabel) : option.label;
     }
 
