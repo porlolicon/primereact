@@ -612,7 +612,7 @@ export class AutoComplete extends Component {
 
         let input, dropdown;
         let className = classNames('ui-autocomplete ui-widget', this.props.className, {
-            'ui-autocomplete-dd': this.props.dropdown,
+            'ui-autocomplete-dd': this.props.dropdown && !this.props.readonly,
             'ui-autocomplete-multiple': this.props.multiple
         });
         let loader = this.renderLoader();
@@ -622,7 +622,7 @@ export class AutoComplete extends Component {
         else
             input = this.renderSimpleAutoComplete();
 
-        if (this.props.dropdown) {
+        if (this.props.dropdown && !this.props.readonly) {
             dropdown = this.renderDropdown();
         }
 

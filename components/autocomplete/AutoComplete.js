@@ -619,14 +619,14 @@ var AutoComplete = exports.AutoComplete = function (_Component) {
             var input = void 0,
                 dropdown = void 0;
             var className = (0, _classnames2.default)('ui-autocomplete ui-widget', this.props.className, {
-                'ui-autocomplete-dd': this.props.dropdown,
+                'ui-autocomplete-dd': this.props.dropdown && !this.props.readonly,
                 'ui-autocomplete-multiple': this.props.multiple
             });
             var loader = this.renderLoader();
 
             if (this.props.multiple) input = this.renderMultipleAutoComplete();else input = this.renderSimpleAutoComplete();
 
-            if (this.props.dropdown) {
+            if (this.props.dropdown && !this.props.readonly) {
                 dropdown = this.renderDropdown();
             }
 
