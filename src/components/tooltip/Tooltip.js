@@ -18,7 +18,7 @@ export class Tooltip extends Component {
         showDelay: null,
         onBeforeShow: null
     };
- 
+
     static propTypes = {
         for: PropTypes.any,
         title: PropTypes.string,
@@ -33,19 +33,24 @@ export class Tooltip extends Component {
         showDelay: PropTypes.number,
         onBeforeShow: PropTypes.func
     };
- 
+
     constructor() {
         super();
         this.handleLoad = this.handleLoad.bind(this);
+        this.handleUnLoad = this.handleUnLoad.bind(this);
+        this.onMouseEnter = this.onMouseEnter.bind(this);
+        this.onMouseLeave = this.onMouseLeave.bind(this);
+        this.bindMouseEvents = this.bindMouseEvents.bind(this);
+        this.unBindMouseEvents = this.unBindMouseEvents.bind(this);
     }
- 
+
     onMouseEnter(event) {
-        if(this.props.tooltipEvent === 'hover') {
-            if(this.props.onBeforeShow) {
-                this.props.onBeforeShow({originalEvent: event});
+        if (this.props.tooltipEvent === 'hover') {
+            if (this.props.onBeforeShow) {
+                this.props.onBeforeShow({ originalEvent: event });
             }
 
-            if(this.hideTimeout) {
+            if (this.hideTimeout) {
                 clearTimeout(this.hideTimeout);
                 this.destroy();
             }
@@ -53,171 +58,171 @@ export class Tooltip extends Component {
             this.activate(event);
         }
     }
- 
+
     onMouseLeave(event) {
-        if(this.props.tooltipEvent === 'hover') {
+        if (this.props.tooltipEvent === 'hover') {
             this.deactivate();
         }
     }
- 
+
     onFocus(event) {
-        if(this.props.tooltipEvent === 'focus') {
+        if (this.props.tooltipEvent === 'focus') {
             this.activate(event);
         }
     }
- 
+
     onBlur(event) {
-        if(this.props.tooltipEvent === 'focus') {
+        if (this.props.tooltipEvent === 'focus') {
             this.deactivate();
         }
     }
- 
+
     activate(event) {
-        if(this.props.onBeforeShow) {
-            this.props.onBeforeShow({originalEvent: event});
+        if (this.props.onBeforeShow) {
+            this.props.onBeforeShow({ originalEvent: event });
         }
 
         this.active = true;
-        if(this.hideTimeout) {
+        if (this.hideTimeout) {
             clearTimeout(this.hideTimeout);
         }
-        
-        if(this.props.showDelay)
+
+        if (this.props.showDelay)
             this.showTimeout = setTimeout(() => { this.show() }, this.props.showDelay);
         else
             this.show();
     }
-    
+
     deactivate() {
         this.active = false;
-        if(this.showTimeout) {
+        if (this.showTimeout) {
             clearTimeout(this.showTimeout);
         }
-        
-        if(this.hideDelay)
+
+        if (this.hideDelay)
             this.hideTimeout = setTimeout(() => { this.hide() }, this.props.hideDelay);
         else
             this.hide();
     }
-    
+
     create() {
         this.container = document.createElement('div');
-                
+
         let tooltipArrow = document.createElement('div');
         tooltipArrow.className = 'ui-tooltip-arrow';
         this.container.appendChild(tooltipArrow);
-        
+
         this.tooltipText = document.createElement('div');
         this.tooltipText.className = 'ui-tooltip-text ui-shadow ui-corner-all';
 
-		this.updateText();
-        
-        if(this.props.positionStyle) {
+        this.updateText();
+
+        if (this.props.positionStyle) {
             this.container.style.position = this.props.positionStyle;
         }
-        
+
         this.container.appendChild(this.tooltipText);
 
-        if(this.props.appendTo === 'body')
+        if (this.props.appendTo === 'body')
             document.body.appendChild(this.container);
-        else if(this.props.appendTo === 'target')
+        else if (this.props.appendTo === 'target')
             DomHandler.appendChild(this.container, this.element);
         else
             DomHandler.appendChild(this.container, this.props.appendTo);
-            
+
         this.container.style.display = 'inline-block';
     }
-    
+
     show() {
-        if(!this.props.title || this.props.disabled) {
+        if (!this.props.title || this.props.disabled) {
             return;
         }
-        
+
         this.create();
         this.align();
-        if(this.props.tooltipStyleClass) {
-            this.container.className = this.container.className + ' ' + this.props.tooltipStyleClass; 
+        if (this.props.tooltipStyleClass) {
+            this.container.className = this.container.className + ' ' + this.props.tooltipStyleClass;
         }
         DomHandler.fadeIn(this.container, 250);
         this.container.style.zIndex = String(DomHandler.generateZIndex());
         this.bindDocumentResizeListener();
     }
-    
+
     hide() {
         this.destroy();
     }
-    
+
     updateText() {
-        if(this.props.escape) {
+        if (this.props.escape) {
             this.tooltipText.innerHTML = '';
             this.tooltipText.appendChild(document.createTextNode(this.props.title));
         }
-		else {
+        else {
             this.tooltipText.innerHTML = this.props.title;
         }
     }
-    
+
     align() {
         let position = this.props.tooltipPosition;
-        
-        switch(position) {
+
+        switch (position) {
             case 'top':
                 this.alignTop();
-                if(this.isOutOfBounds()) {
+                if (this.isOutOfBounds()) {
                     this.alignBottom();
                 }
-            break;
-            
+                break;
+
             case 'bottom':
                 this.alignBottom();
-                if(this.isOutOfBounds()) {
+                if (this.isOutOfBounds()) {
                     this.alignTop();
                 }
-            break;
-            
+                break;
+
             case 'left':
                 this.alignLeft();
-                if(this.isOutOfBounds()) {
+                if (this.isOutOfBounds()) {
                     this.alignRight();
-                    
-                    if(this.isOutOfBounds()) {
+
+                    if (this.isOutOfBounds()) {
                         this.alignTop();
-                        
-                        if(this.isOutOfBounds()) {
+
+                        if (this.isOutOfBounds()) {
                             this.alignBottom();
                         }
                     }
                 }
-            break;
-            
+                break;
+
             case 'right':
                 this.alignRight();
-                if(this.isOutOfBounds()) {
+                if (this.isOutOfBounds()) {
                     this.alignLeft();
-                    
-                    if(this.isOutOfBounds()) {
+
+                    if (this.isOutOfBounds()) {
                         this.alignTop();
-                        
-                        if(this.isOutOfBounds()) {
+
+                        if (this.isOutOfBounds()) {
                             this.alignBottom();
                         }
                     }
                 }
-            break;
+                break;
 
             default:
-            break;
+                break;
         }
     }
-    
+
     getHostOffset() {
         let offset = this.element.getBoundingClientRect();
         let targetLeft = offset.left + DomHandler.getWindowScrollLeft();
         let targetTop = offset.top + DomHandler.getWindowScrollTop();
-        
-        return {left: targetLeft, top: targetTop};
+
+        return { left: targetLeft, top: targetTop };
     }
-    
+
     alignRight() {
         this.preAlign();
         this.container.className = 'ui-tooltip ui-widget ui-tooltip-right';
@@ -226,8 +231,8 @@ export class Tooltip extends Component {
         let top = hostOffset.top + (DomHandler.getOuterHeight(this.element) - DomHandler.getOuterHeight(this.container)) / 2;
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
-    } 
-    
+    }
+
     alignLeft() {
         this.preAlign();
         this.container.className = 'ui-tooltip ui-widget ui-tooltip-left';
@@ -236,8 +241,8 @@ export class Tooltip extends Component {
         let top = hostOffset.top + (DomHandler.getOuterHeight(this.element) - DomHandler.getOuterHeight(this.container)) / 2;
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
-    } 
-    
+    }
+
     alignTop() {
         this.preAlign();
         this.container.className = 'ui-tooltip ui-widget ui-tooltip-top';
@@ -246,8 +251,8 @@ export class Tooltip extends Component {
         let top = hostOffset.top - DomHandler.getOuterHeight(this.container);
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
-    } 
-    
+    }
+
     alignBottom() {
         this.preAlign();
         this.container.className = 'ui-tooltip ui-widget ui-tooltip-bottom';
@@ -257,12 +262,12 @@ export class Tooltip extends Component {
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
     }
-    
+
     preAlign() {
         this.container.style.left = -999 + 'px';
         this.container.style.top = -999 + 'px';
     }
-    
+
     isOutOfBounds() {
         let offset = this.container.getBoundingClientRect();
         let targetTop = offset.top;
@@ -273,7 +278,7 @@ export class Tooltip extends Component {
 
         return (targetLeft + width > viewport.width) || (targetLeft < 0) || (targetTop < 0) || (targetTop + height > viewport.height);
     }
-        
+
     bindDocumentResizeListener() {
         this.documentResizeListener = () => {
             this.hide();
@@ -281,9 +286,9 @@ export class Tooltip extends Component {
 
         window.addEventListener('resize', this.documentResizeListener);
     }
-    
+
     unbindDocumentResizeListener() {
-        if(this.documentResizeListener) {
+        if (this.documentResizeListener) {
             window.removeEventListener('resize', this.documentResizeListener);
             this.documentResizeListener = null;
         }
@@ -291,11 +296,11 @@ export class Tooltip extends Component {
 
     destroy() {
         this.unbindDocumentResizeListener();
-        
-        if(this.container && this.container.parentElement) {
-            if(this.props.appendTo === 'body')
+        this.handleUnLoad()
+        if (this.container && this.container.parentElement) {
+            if (this.props.appendTo === 'body')
                 document.body.removeChild(this.container);
-            else if(this.props.appendTo === 'target')
+            else if (this.props.appendTo === 'target')
                 this.element.removeChild(this.container);
             else
                 DomHandler.removeChild(this.container, this.props.appendTo);
@@ -305,27 +310,48 @@ export class Tooltip extends Component {
 
     bindMouseEvents(selector) {
         let elements = document.querySelectorAll(selector);
-        if(!elements) 
+        if (!elements)
             return;
 
-        if(this.props.tooltipEvent === 'hover') {
+        if (this.props.tooltipEvent === 'hover') {
             for (let i = 0; i < elements.length; i++) {
-                elements[i].addEventListener("mouseenter", (e) => {this.element = elements[i];  this.onMouseEnter(e);});
-                elements[i].addEventListener("mouseleave", (e) => this.onMouseLeave(e));
+                this.element = elements[i];
+                elements[i].addEventListener("mouseenter", this.onMouseEnter);
+                elements[i].addEventListener("mouseleave", this.onMouseLeave);
             }
         }
-        else if(this.props.tooltipEvent === 'focus') {
+        else if (this.props.tooltipEvent === 'focus') {
             for (let i = 0; i < elements.length; i++) {
-                elements[i].addEventListener("focus", (e) => {this.element = elements[i]; this.onFocus(e);});
-                elements[i].addEventListener("blur", (e) => this.onBlur(e));
+                this.element = elements[i];
+                elements[i].addEventListener("focus", this.onFocus);
+                elements[i].addEventListener("blur", this.onBlur);
+            }
+        }
+    }
+
+    unBindMouseEvents(selector) {
+        let elements = document.querySelectorAll(selector);
+        if (!elements)
+            return;
+
+        if (this.props.tooltipEvent === 'hover') {
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].removeEventListener("mouseenter", this.onMouseEnter);
+                elements[i].removeEventListener("mouseleave", this.onMouseLeave);
+            }
+        }
+        else if (this.props.tooltipEvent === 'focus') {
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].removeEventListener("focus", this.onFocus);
+                elements[i].removeEventListener("blur", this.onBlur);
             }
         }
     }
 
     handleLoad() {
         var selectors = this.props.for;
-        
-        if(selectors instanceof Array) {
+
+        if (selectors instanceof Array) {
             for (var i = 0; i < selectors.length; i++) {
                 this.bindMouseEvents(selectors[i]);
             }
@@ -333,8 +359,21 @@ export class Tooltip extends Component {
         else {
             this.bindMouseEvents(selectors);
         }
-            
+
         document.body.removeEventListener('mouseover', this.handleLoad);
+    }
+
+    handleUnLoad() {
+        var selectors = this.props.for;
+
+        if (selectors instanceof Array) {
+            for (var i = 0; i < selectors.length; i++) {
+                this.unBindMouseEvents(selectors[i]);
+            }
+        }
+        else {
+            this.unBindMouseEvents(selectors);
+        }
     }
 
     componentDidMount() {
@@ -348,4 +387,4 @@ export class Tooltip extends Component {
     render() {
         return null;
     }
- }
+}

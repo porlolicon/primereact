@@ -34,6 +34,11 @@ var Tooltip = exports.Tooltip = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).call(this));
 
         _this.handleLoad = _this.handleLoad.bind(_this);
+        _this.handleUnLoad = _this.handleUnLoad.bind(_this);
+        _this.onMouseEnter = _this.onMouseEnter.bind(_this);
+        _this.onMouseLeave = _this.onMouseLeave.bind(_this);
+        _this.bindMouseEvents = _this.bindMouseEvents.bind(_this);
+        _this.unBindMouseEvents = _this.unBindMouseEvents.bind(_this);
         return _this;
     }
 
@@ -309,7 +314,7 @@ var Tooltip = exports.Tooltip = function (_Component) {
         key: 'destroy',
         value: function destroy() {
             this.unbindDocumentResizeListener();
-
+            this.handleUnLoad();
             if (this.container && this.container.parentElement) {
                 if (this.props.appendTo === 'body') document.body.removeChild(this.container);else if (this.props.appendTo === 'target') this.element.removeChild(this.container);else _DomHandler2.default.removeChild(this.container, this.props.appendTo);
             }
@@ -318,36 +323,38 @@ var Tooltip = exports.Tooltip = function (_Component) {
     }, {
         key: 'bindMouseEvents',
         value: function bindMouseEvents(selector) {
-            var _this5 = this;
-
             var elements = document.querySelectorAll(selector);
             if (!elements) return;
 
             if (this.props.tooltipEvent === 'hover') {
-                var _loop = function _loop(i) {
-                    elements[i].addEventListener("mouseenter", function (e) {
-                        _this5.element = elements[i];_this5.onMouseEnter(e);
-                    });
-                    elements[i].addEventListener("mouseleave", function (e) {
-                        return _this5.onMouseLeave(e);
-                    });
-                };
-
                 for (var i = 0; i < elements.length; i++) {
-                    _loop(i);
+                    this.element = elements[i];
+                    elements[i].addEventListener("mouseenter", this.onMouseEnter);
+                    elements[i].addEventListener("mouseleave", this.onMouseLeave);
                 }
             } else if (this.props.tooltipEvent === 'focus') {
-                var _loop2 = function _loop2(i) {
-                    elements[i].addEventListener("focus", function (e) {
-                        _this5.element = elements[i];_this5.onFocus(e);
-                    });
-                    elements[i].addEventListener("blur", function (e) {
-                        return _this5.onBlur(e);
-                    });
-                };
+                for (var _i = 0; _i < elements.length; _i++) {
+                    this.element = elements[_i];
+                    elements[_i].addEventListener("focus", this.onFocus);
+                    elements[_i].addEventListener("blur", this.onBlur);
+                }
+            }
+        }
+    }, {
+        key: 'unBindMouseEvents',
+        value: function unBindMouseEvents(selector) {
+            var elements = document.querySelectorAll(selector);
+            if (!elements) return;
 
+            if (this.props.tooltipEvent === 'hover') {
                 for (var i = 0; i < elements.length; i++) {
-                    _loop2(i);
+                    elements[i].removeEventListener("mouseenter", this.onMouseEnter);
+                    elements[i].removeEventListener("mouseleave", this.onMouseLeave);
+                }
+            } else if (this.props.tooltipEvent === 'focus') {
+                for (var _i2 = 0; _i2 < elements.length; _i2++) {
+                    elements[_i2].removeEventListener("focus", this.onFocus);
+                    elements[_i2].removeEventListener("blur", this.onBlur);
                 }
             }
         }
@@ -365,6 +372,19 @@ var Tooltip = exports.Tooltip = function (_Component) {
             }
 
             document.body.removeEventListener('mouseover', this.handleLoad);
+        }
+    }, {
+        key: 'handleUnLoad',
+        value: function handleUnLoad() {
+            var selectors = this.props.for;
+
+            if (selectors instanceof Array) {
+                for (var i = 0; i < selectors.length; i++) {
+                    this.unBindMouseEvents(selectors[i]);
+                }
+            } else {
+                this.unBindMouseEvents(selectors);
+            }
         }
     }, {
         key: 'componentDidMount',
