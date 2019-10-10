@@ -296,7 +296,6 @@ export class Tooltip extends Component {
 
     destroy() {
         this.unbindDocumentResizeListener();
-        this.handleUnLoad()
         if (this.container && this.container.parentElement) {
             if (this.props.appendTo === 'body')
                 document.body.removeChild(this.container);
@@ -382,6 +381,7 @@ export class Tooltip extends Component {
 
     componentWillUnmount() {
         this.destroy();
+        this.handleUnLoad();
     }
 
     render() {

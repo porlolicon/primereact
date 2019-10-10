@@ -314,7 +314,6 @@ var Tooltip = exports.Tooltip = function (_Component) {
         key: 'destroy',
         value: function destroy() {
             this.unbindDocumentResizeListener();
-            this.handleUnLoad();
             if (this.container && this.container.parentElement) {
                 if (this.props.appendTo === 'body') document.body.removeChild(this.container);else if (this.props.appendTo === 'target') this.element.removeChild(this.container);else _DomHandler2.default.removeChild(this.container, this.props.appendTo);
             }
@@ -395,6 +394,7 @@ var Tooltip = exports.Tooltip = function (_Component) {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
             this.destroy();
+            this.handleUnLoad();
         }
     }, {
         key: 'render',
